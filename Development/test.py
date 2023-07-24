@@ -12,7 +12,7 @@ def register():
     register_screen.title("Register")
     register_screen.geometry("300x250")
  
-    global username
+    global username 
     global password
     global username_entry
     global password_entry
