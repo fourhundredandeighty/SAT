@@ -10,6 +10,6 @@ root.geometry("600x600")
 date = tb.DateEntry(root)
 date.place(x=360, y=20)
 
-exercises
+# exercises
 
 root.mainloop()
