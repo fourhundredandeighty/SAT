@@ -1,8 +1,8 @@
 from tkinter import *
-from tkinter import messagebox
 from ttkbootstrap.constants import *
 import ttkbootstrap as tb
 import os
+from PIL import ImageTk,Image
 
 # Designing window for registration
 
@@ -90,7 +90,7 @@ def login_sucess():
     login_success_screen.title("Success")
     login_success_screen.geometry("150x100")
     tb.Label(login_success_screen, text="Login Success").place(x=1, y=1)
-    tb.Button(login_success_screen, text="OK", command=delete_login_success).place(x=20, y=20)
+    tb.Button(login_success_screen, text="OK", command=main_gui).place(x=20, y=20)
 
 # Designing popup for login invalid password
 
@@ -114,14 +114,35 @@ def user_not_found():
 
 # Deleting popups
 
-def delete_login_success():
-    login_success_screen.destroy()
-
 def delete_password_not_recognised():
     password_not_recog_screen.destroy()
 
 def delete_user_not_found_screen():
     user_not_found_screen.destroy()
+
+def main_gui():
+    login_success_screen.destroy()
+    login_screen.destroy()
+    root.destroy()
+
+    main_gui = tb.Window(themename="superhero")
+    main_gui.geometry("500x500")
+    main_gui.title("Exercise Planner")
+
+    canvas = Canvas(main_gui)
+    canvas.place(x=10, y=10)
+    img = ImageTk.PhotoImage(Image.open("image.png"))
+    canvas.create_image(1,1,anchor=NW,image=img)
+
+
+
+    main_gui.mainloop()
+
+
+
+
+
+
 
 
 root = tb.Window(themename="superhero")
