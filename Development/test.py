@@ -1,20 +1,21 @@
-from tkinter import *
-from PIL import Image,ImageTk
+from tkinter import Tk, Label
+from PIL import ImageTk, Image
 
-#Create an instance of tkinter frame
-win = Tk()
+# Create a Tkinter window
+root = Tk()
 
-#Set the geometry of tkinter frame
-win.geometry("750x750")
+# Open the image using PIL
+image = Image.open("image.png")
 
-#Create a canvas
-canvas= Canvas(win)
-canvas.place(x=10, y=10)
+# Resize the image
+resized_image = image.resize((100, 100))
 
-#Load an image in the script
-img= ImageTk.PhotoImage(Image.open("image.png"))
+# Convert the PIL image object to a Tkinter image object
+tk_image = ImageTk.PhotoImage(resized_image)
 
-#Add image to the Canvas Items
-canvas.create_image(100,100,anchor=NW,image=img)
+# Display the image on a Tkinter label
+label = Label(root, image=tk_image)
+label.pack()
 
-win.mainloop()
+# Run the Tkinter main loop
+root.mainloop()

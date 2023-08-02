@@ -7,6 +7,9 @@ from PIL import ImageTk,Image
 # Designing window for registration
 
 def register():
+    """
+    Creates a new registration screen and initializes the necessary global variables.
+    """
     global register_screen
     register_screen = Toplevel(root)
     register_screen.title("Register")
@@ -29,6 +32,15 @@ def register():
 # Designing window for login 
 
 def login():
+    """
+    Opens a new login screen window where the user can enter their login details.
+    
+    Parameters:
+        None
+    
+    Returns:
+        None
+    """
     global login_screen
     login_screen = Toplevel(root)
     login_screen.title("Login")
@@ -51,6 +63,15 @@ def login():
 # Implementing event on register button
 
 def register_user():
+    """
+    Registers a user by writing their username and password to a file.
+    
+    Parameters:
+        None
+    
+    Returns:
+        None
+    """
     username_info = username.get()
     password_info = password.get()
     file = open(username_info, "w")
@@ -64,6 +85,25 @@ def register_user():
 # Implementing event on login button 
 
 def login_verify():
+    """
+    Function to verify login credentials.
+    
+    This function takes no parameters.
+    
+    It retrieves the username and password entered by the user from two different entry fields.
+    It then clears the contents of both entry fields.
+    
+    It retrieves a list of files in the current directory using the `os.listdir()` function.
+    If the entered username is found in the list of files, it opens the corresponding file in read mode.
+    It reads the contents of the file and splits them into a list of lines.
+    
+    If the entered password is found in the list of lines, it calls the `login_success()` function.
+    Otherwise, it calls the `password_not_recognized()` function.
+    
+    If the entered username is not found in the list of files, it calls the `user_not_found()` function.
+    
+    This function does not return any values.
+    """
     username1 = username_verify.get()
     password1 = password_verify.get()
     username_login_entry.delete(0, END)
@@ -85,6 +125,14 @@ def login_verify():
 # Designing popup for login success
 
 def login_sucess():
+    """
+    Creates a new window to display a success message after a successful login.
+
+    This function does not take any parameters.
+
+    Returns:
+        None
+    """
     global login_success_screen
     login_success_screen = Toplevel(login_screen)
     login_success_screen.title("Success")
@@ -95,6 +143,15 @@ def login_sucess():
 # Designing popup for login invalid password
 
 def password_not_recognised():
+    """
+    Displays a screen indicating that the password entered was not recognised.
+
+    Parameters:
+        None
+
+    Returns:
+        None
+    """
     global password_not_recog_screen
     password_not_recog_screen = Toplevel(login_screen)
     password_not_recog_screen.title("Success")
@@ -105,6 +162,17 @@ def password_not_recognised():
 # Designing popup for user not found
 
 def user_not_found():
+    """
+    Create a new window to display a "User Not Found" message.
+
+    This function creates a new window using the Toplevel class from the tkinter library. The window is titled "Success" and has dimensions of 150x100 pixels. It displays a label with the text "User Not Found" at coordinates (1,1) and a button with the text "OK" at coordinates (20,20). Clicking the button will call the `delete_user_not_found_screen` function.
+
+    Parameters:
+        None
+
+    Returns:
+        None
+    """
     global user_not_found_screen
     user_not_found_screen = Toplevel(login_screen)
     user_not_found_screen.title("Success")
@@ -115,24 +183,69 @@ def user_not_found():
 # Deleting popups
 
 def delete_password_not_recognised():
+    """
+    Deletes the password_not_recog_screen.
+
+    This function destroys the password_not_recog_screen widget, removing it from the GUI.
+
+    Parameters:
+        None
+
+    Returns:
+        None
+    """
     password_not_recog_screen.destroy()
 
 def delete_user_not_found_screen():
+    """
+    Delete the user not found screen.
+
+    This function destroys the user not found screen.
+
+    Parameters:
+        None
+
+    Returns:
+        None
+    """
     user_not_found_screen.destroy()
 
 def main_gui():
+    """
+    Creates and displays the main graphical user interface (GUI) of the application.
+    This function destroys any existing login screens or windows and creates a new window
+    with a specified theme, size, and title. It also loads and displays an image on the window.
+    
+    Parameters:
+        None
+        
+    Returns:
+        None
+    """
     login_success_screen.destroy()
     login_screen.destroy()
     root.destroy()
 
     main_gui = tb.Window(themename="superhero")
-    main_gui.geometry("500x500")
+    main_gui.geometry("1200x800")
     main_gui.title("Exercise Planner")
 
-    canvas = Canvas(main_gui)
-    canvas.place(x=10, y=10)
-    img = ImageTk.PhotoImage(Image.open("image.png"))
-    canvas.create_image(1,1,anchor=NW,image=img)
+    image = Image.open("image.png")
+    resized_image = image.resize((400, 500))
+    tk_image = ImageTk.PhotoImage(resized_image)
+    label = Label(main_gui, image=tk_image)
+    label.place(x=1, y=1)
+
+
+    columns = ("Exercise", "Sets", "Reps")
+    tree = tb.Treeview(main_gui, columns=columns, show="headings").place(x=1, y=50)
+
+    tree.heading("Exercise", text="Exercise")
+    tree.heading("Sets", text="Sets")
+    tree.heading("Reps", text="Reps")
+
+    
+
 
 
 
