@@ -238,13 +238,13 @@ def main_gui():
 
 
     columns = ("Exercise", "Sets", "Reps")
-    tree = tb.Treeview(main_gui, columns=columns, show="headings").place(x=1, y=50)
+    tree = tb.Treeview(main_gui, columns=columns, show="headings", height=100)
+    tree.place(x=430, y=30)
 
     tree.heading("Exercise", text="Exercise")
     tree.heading("Sets", text="Sets")
     tree.heading("Reps", text="Reps")
 
-    
 
 
 
