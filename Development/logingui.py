@@ -165,7 +165,10 @@ def user_not_found():
     """
     Create a new window to display a "User Not Found" message.
 
-    This function creates a new window using the Toplevel class from the tkinter library. The window is titled "Success" and has dimensions of 150x100 pixels. It displays a label with the text "User Not Found" at coordinates (1,1) and a button with the text "OK" at coordinates (20,20). Clicking the button will call the `delete_user_not_found_screen` function.
+    This function creates a new window using the Toplevel class from the tkinter library. 
+    The window is titled "Success" and has dimensions of 150x100 pixels. 
+    It displays a label with the text "User Not Found" at coordinates (1,1) and a button with the text "OK" at coordinates (20,20). 
+    Clicking the button will call the `delete_user_not_found_screen` function.
 
     Parameters:
         None
@@ -218,7 +221,7 @@ def main_gui():
     
     Parameters:
         None
-        
+
     Returns:
         None
     """
@@ -227,7 +230,7 @@ def main_gui():
     root.destroy()
 
     main_gui = tb.Window(themename="superhero")
-    main_gui.geometry("1200x800")
+    main_gui.geometry("2560x1600")
     main_gui.title("Exercise Planner")
 
     image = Image.open("image.png")
@@ -238,12 +241,21 @@ def main_gui():
 
 
     columns = ("Exercise", "Sets", "Reps")
-    tree = tb.Treeview(main_gui, columns=columns, show="headings", height=100)
+    tree = tb.Treeview(main_gui, columns=columns, show="headings", height=10)
     tree.place(x=430, y=30)
 
     tree.heading("Exercise", text="Exercise")
     tree.heading("Sets", text="Sets")
     tree.heading("Reps", text="Reps")
+
+
+    tb.Button(text="Triceps").place(x=10, y=550)
+    tb.Button(text="Biceps").place(x=60, y=550)
+    tb.Button(text="Legs").place(x=110, y=550)
+    tb.Button(text="Back").place(x=160, y=550)
+    tb.Button(text="Abs").place(x=210, y=550)
+    tb.Button(text="Shoulders").place(x=260, y=550)
+    tb.Button(text="Chest").place(x=310, y=550)
 
 
 
