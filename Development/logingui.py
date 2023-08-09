@@ -249,13 +249,26 @@ def main_gui():
     tree.heading("Reps", text="Reps")
 
 
-    tb.Button(text="Triceps").place(x=10, y=550)
-    tb.Button(text="Biceps").place(x=60, y=550)
-    tb.Button(text="Legs").place(x=110, y=550)
-    tb.Button(text="Back").place(x=160, y=550)
-    tb.Button(text="Abs").place(x=210, y=550)
-    tb.Button(text="Shoulders").place(x=260, y=550)
-    tb.Button(text="Chest").place(x=310, y=550)
+    triceps = tb.Button(bootstyle="success", text="Triceps")
+    triceps.place(x=0, y=550)
+
+    biceps = tb.Button(bootstyle="success", text="Biceps")
+    biceps.place(x=100, y=550)
+
+    legs = tb.Button(bootstyle="success", text="Legs")
+    legs.place(x=200, y=550)
+
+    back = tb.Button(bootstyle="success", text="Back")
+    back.place(x=300, y=550)
+
+    abs = tb.Button(bootstyle="success", text="Abs")
+    abs.place(x=400, y=550)
+
+    chest = tb.Button(bootstyle="success", text="Chest")
+    chest.place(x=500, y=550)
+
+    shoulders = tb.Button(bootstyle="success", text="Shoulders")
+    shoulders.place(x=600, y=550)
 
 
 
