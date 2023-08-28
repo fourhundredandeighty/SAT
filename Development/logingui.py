@@ -248,30 +248,114 @@ def main_gui():
     tree.heading("Sets", text="Sets")
     tree.heading("Reps", text="Reps")
 
+    def triceps_add():
+        tree.delete(*tree.get_children())  
 
-    triceps = tb.Button(bootstyle="success", text="Triceps")
+        items_to_add = [
+            ("Press Down", "3", "10"),
+            ("Shoulder Press", "4", "10"),
+            ("Closed Grip Bench Press", "2", "8")
+        ]
+
+        for item in items_to_add:
+            tree.insert("", "end", values=item)
+
+    def biceps_add():
+        tree.delete(*tree.get_children())  
+
+        items_to_add = [
+            ("Hammer Curl", "3", "10"),
+            ("Incline Bicep Curl", "3", "12"),
+            ("Barbell Curl", "3", "8")
+        ]
+
+        for item in items_to_add:
+            tree.insert("", "end", values=item)
+
+    def legs_add():
+        tree.delete(*tree.get_children())  
+
+        items_to_add = [
+            ("Back Squats", "3", "10"),
+            ("Calf Raises", "3", "15"),
+            ("Hip Thrusts", "3", "8")
+        ]
+
+        for item in items_to_add:
+            tree.insert("", "end", values=item)
+
+    def back_add():
+        tree.delete(*tree.get_children())  
+
+        items_to_add = [
+            ("Lat pulldown", "3", "10"),
+            ("Deadlift", "3", "6"),
+            ("Barbell Row", "3", "8")
+        ]
+
+        for item in items_to_add:
+            tree.insert("", "end", values=item)
+
+    def abs_add():
+        tree.delete(*tree.get_children())  
+
+        items_to_add = [
+            ("Knee to Elbow Crunch", "3", "10"),
+            ("Sit Ups", "3", "10"),
+            ("Elbow Plank", "3", "10")
+        ]
+
+        for item in items_to_add:
+            tree.insert("", "end", values=item)
+
+    def chest_add():
+        tree.delete(*tree.get_children())  
+
+        items_to_add = [
+            ("Bench Press", "3", "10"),
+            ("Inclined Press", "3", "10"),
+            ("Chest Dips", "2", "8")
+        ]
+
+        for item in items_to_add:
+            tree.insert("", "end", values=item)
+
+    def shoulders_add():
+        tree.delete(*tree.get_children())  
+
+        items_to_add = [
+            ("Shoulder Press", "3", "10"),
+            ("Seated Raises", "3", "10"),
+            ("Lateral Raise", "3", "10")
+        ]
+
+        for item in items_to_add:
+            tree.insert("", "end", values=item)
+
+
+    triceps = tb.Button(bootstyle="success", text="Triceps", command=triceps_add)
     triceps.place(x=0, y=550)
-
-    biceps = tb.Button(bootstyle="success", text="Biceps")
+    biceps = tb.Button(bootstyle="success", text="Biceps", command=biceps_add)
     biceps.place(x=100, y=550)
-
-    legs = tb.Button(bootstyle="success", text="Legs")
+    legs = tb.Button(bootstyle="success", text="Legs", command=legs_add)
     legs.place(x=200, y=550)
-
-    back = tb.Button(bootstyle="success", text="Back")
+    back = tb.Button(bootstyle="success", text="Back", command=back_add)
     back.place(x=300, y=550)
-
-    abs = tb.Button(bootstyle="success", text="Abs")
+    abs = tb.Button(bootstyle="success", text="Abs", command=abs_add)
     abs.place(x=400, y=550)
-
-    chest = tb.Button(bootstyle="success", text="Chest")
+    chest = tb.Button(bootstyle="success", text="Chest", command=chest_add)
     chest.place(x=500, y=550)
-
-    shoulders = tb.Button(bootstyle="success", text="Shoulders")
+    shoulders = tb.Button(bootstyle="success", text="Shoulders", command=shoulders_add)
     shoulders.place(x=600, y=550)
 
 
 
+    tree2 = tb.Treeview(main_gui, columns=columns, show="headings", height=10)
+    tree2.place(x=430, y=30)
+
+    tree2.heading("Exercise", text="Exercise")
+    tree2.heading("Sets", text="Sets")
+    tree2.heading("Reps", text="Reps")
 
 
     main_gui.mainloop()
