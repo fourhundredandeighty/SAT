@@ -349,14 +349,25 @@ def main_gui():
     shoulders.place(x=600, y=550)
 
 
-
     tree2 = tb.Treeview(main_gui, columns=columns, show="headings", height=10)
-    tree2.place(x=430, y=30)
+    tree2.place(x=800, y=400)
 
     tree2.heading("Exercise", text="Exercise")
     tree2.heading("Sets", text="Sets")
     tree2.heading("Reps", text="Reps")
 
+    def add_selected_item():
+        selected_item = tree.selection()
+        if selected_item:
+            values = tree.item(selected_item, "values")
+            tree2.insert("", "end", values=values)
+
+    add_button = tb.Button(main_gui, text="Add Selected Item", command=add_selected_item)
+    add_button.place(x=660, y=250)
+
+
+    calendar = tb.DateEntry(main_gui)
+    calendar.place(x=1, y=1)
 
     main_gui.mainloop()
 
