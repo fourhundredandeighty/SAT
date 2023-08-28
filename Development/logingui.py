@@ -366,8 +366,14 @@ def main_gui():
     add_button.place(x=660, y=250)
 
 
-    calendar = tb.DateEntry(main_gui)
+    calendar = tb.DateEntry(main_gui) #problem
     calendar.place(x=1, y=1)
+
+    def clear_items():
+        tree2.delete(*tree.get_children())
+
+    clear_button = tb.Button(main_gui, text="Clear Items", command=clear_items)
+    clear_button.place(x=1, y=1) #problem
 
     main_gui.mainloop()
 
