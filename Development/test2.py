@@ -27,7 +27,7 @@ label.place(x=1, y=1)
 
 columns = ("Exercise", "Sets", "Reps")
 tree = tb.Treeview(main_gui, columns=columns, show="headings", height=10)
-tree.place(x=430, y=30)
+tree.place(x=410, y=30)
 
 tree.heading("Exercise", text="Exercise")
 tree.heading("Sets", text="Sets")
@@ -121,17 +121,17 @@ def shoulders_add():
 triceps = tb.Button(bootstyle="success", text="Triceps", command=triceps_add)
 triceps.place(x=0, y=550)
 biceps = tb.Button(bootstyle="success", text="Biceps", command=biceps_add)
-biceps.place(x=100, y=550)
+biceps.place(x=80, y=550)
 legs = tb.Button(bootstyle="success", text="Legs", command=legs_add)
-legs.place(x=200, y=550)
+legs.place(x=155, y=550)
 back = tb.Button(bootstyle="success", text="Back", command=back_add)
-back.place(x=300, y=550)
+back.place(x=220, y=550)
 abs = tb.Button(bootstyle="success", text="Abs", command=abs_add)
-abs.place(x=400, y=550)
+abs.place(x=285, y=550)
 chest = tb.Button(bootstyle="success", text="Chest", command=chest_add)
-chest.place(x=500, y=550)
+chest.place(x=345, y=550)
 shoulders = tb.Button(bootstyle="success", text="Shoulders", command=shoulders_add)
-shoulders.place(x=600, y=550)
+shoulders.place(x=415, y=550)
 
 tree2 = tb.Treeview(main_gui, columns=columns, show="headings", height=10)
 tree2.place(x=800, y=400)
@@ -147,10 +147,26 @@ def add_selected_item():
         tree2.insert("", "end", values=values)
 
 add_button = tb.Button(main_gui, text="Add Selected Item", command=add_selected_item)
-add_button.place(x=660, y=250)
+add_button.place(x=630, y=250)
 
 
 calendar = tb.DateEntry(main_gui)
-calendar.place(x=1, y=1)
+calendar.place(x=1200, y=10)
+
+def clear_items():
+    tree2.delete(*tree2.get_children())
+
+clear_button = tb.Button(main_gui, text="Clear Items", command=clear_items)
+clear_button.place(x=1060, y=610)
+
+tb.Label(text="Listed Exercises").place(x=640, y=5)
+
+tb.Label(text="Today's Exercises").place(x=1050, y=375)
+
+
+
+
+
+
 
 main_gui.mainloop()
