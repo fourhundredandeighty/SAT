@@ -10,6 +10,9 @@ import subprocess
 def register():
     """
     Creates a new registration screen and initializes the necessary global variables.
+    This code defines a function named register() that creates a registration screen and initializes some global variables.
+    It sets up a window with a title and size, and creates labels and input fields for a username and password. 
+    Finally, it adds a button that calls a function named register_user() when clicked.
     """
     global register_screen
     register_screen = Toplevel(root)
@@ -28,19 +31,17 @@ def register():
     password_label = tb.Label(register_screen, text="Password * ").place(x=40, y=120)
     password_entry = Entry(register_screen, textvariable=password, show='*')
     password_entry.place(x=40, y=140)
-    tb.Button(register_screen, text="Register", command = register_user).place(x=110, y=190)
+    tb.Button(register_screen, text="Register", command=register_user).place(x=110, y=190)
+
 
 # Designing window for login 
 
 def login():
     """
-    Opens a new login screen window where the user can enter their login details.
-    
-    Parameters:
-        None
-    
-    Returns:
-        None
+    This code defines a login() function that opens a new window for users to enter their login details. 
+    It creates a window using the Toplevel() function, sets the window's title and dimensions, and adds labels, entry fields, and a login button to the window. 
+    The login button is associated with a login_verify() function that is not shown in the code snippet.
+
     """
     global login_screen
     login_screen = Toplevel(root)
@@ -65,13 +66,10 @@ def login():
 
 def register_user():
     """
-    Registers a user by writing their username and password to a file.
-    
-    Parameters:
-        None
-    
-    Returns:
-        None
+    This code defines a function register_user() that registers a user by writing their username and password to a file.
+    It takes no parameters and returns nothing. 
+    It gets the username and password from some input fields, opens a file with the username as the file name, and writes the username and password into the file.
+    After that, it closes the file and clears the input fields. Finally, it displays a label on the screen saying "Registration Success".
     """
     username_info = username.get()
     password_info = password.get()
@@ -181,7 +179,7 @@ def user_not_found():
     user_not_found_screen = Toplevel(login_screen)
     user_not_found_screen.title("Success")
     user_not_found_screen.geometry("150x100")
-    tb.Label(user_not_found_screen, text="User Not Found").place(x=1, y=1)
+    tb.Label(user_not_found_screen, text="User Not Found or Entry is Empty").place(x=1, y=1)
     tb.Button(user_not_found_screen, text="OK", command=delete_user_not_found_screen).place(x=20, y=20)
 
 # Deleting popups
@@ -216,179 +214,22 @@ def delete_user_not_found_screen():
 
 def main_gui():
     """
-    Creates and displays the main graphical user interface (GUI) of the application.
-    This function destroys any existing login screens or windows and creates a new window
-    with a specified theme, size, and title. It also loads and displays an image on the window.
-    
-    Parameters:
-        None
-
-    Returns:
-        None
+    This code defines a function called main_gui() that creates and displays the main graphical user interface (GUI) of an application.
+    It destroys any existing login screens or windows and creates a new window with a specified theme, size, and title.
+    It also loads and displays an image on the window. 
+    After destroying the existing screens and windows, it tries to run a Python script called main_gui.py using the subprocess module.
+    If there is an error running the script, it prints an error message.
     """
     login_success_screen.destroy()
     login_screen.destroy()
     root.destroy()
     try:
-        subprocess.run(["python", "test2.py"], check=True)
+        subprocess.run(["python", "main_gui.py"], check=True)
     except subprocess.CalledProcessError as e:
         print(f"Error running the script: {e}")
 
-    # main_gui = tb.Window(themename="superhero")
-    # main_gui.geometry("2560x1600")
-    # main_gui.title("Exercise Planner")
 
-    # image = Image.open("image.png")
-    # resized_image = image.resize((400, 500))
-    # tk_image = ImageTk.PhotoImage(resized_image)
-    # label = Label(main_gui, image=tk_image)
-    # label.place(x=1, y=1)
-
-
-    # columns = ("Exercise", "Sets", "Reps")
-    # tree = tb.Treeview(main_gui, columns=columns, show="headings", height=10)
-    # tree.place(x=430, y=30)
-
-    # tree.heading("Exercise", text="Exercise")
-    # tree.heading("Sets", text="Sets")
-    # tree.heading("Reps", text="Reps")
-
-    # def triceps_add():
-    #     tree.delete(*tree.get_children())  
-
-    #     items_to_add = [
-    #         ("Press Down", "3", "10"),
-    #         ("Shoulder Press", "4", "10"),
-    #         ("Closed Grip Bench Press", "2", "8")
-    #     ]
-
-    #     for item in items_to_add:
-    #         tree.insert("", "end", values=item)
-
-    # def biceps_add():
-    #     tree.delete(*tree.get_children())  
-
-    #     items_to_add = [
-    #         ("Hammer Curl", "3", "10"),
-    #         ("Incline Bicep Curl", "3", "12"),
-    #         ("Barbell Curl", "3", "8")
-    #     ]
-
-    #     for item in items_to_add:
-    #         tree.insert("", "end", values=item)
-
-    # def legs_add():
-    #     tree.delete(*tree.get_children())  
-
-    #     items_to_add = [
-    #         ("Back Squats", "3", "10"),
-    #         ("Calf Raises", "3", "15"),
-    #         ("Hip Thrusts", "3", "8")
-    #     ]
-
-    #     for item in items_to_add:
-    #         tree.insert("", "end", values=item)
-
-    # def back_add():
-    #     tree.delete(*tree.get_children())  
-
-    #     items_to_add = [
-    #         ("Lat pulldown", "3", "10"),
-    #         ("Deadlift", "3", "6"),
-    #         ("Barbell Row", "3", "8")
-    #     ]
-
-    #     for item in items_to_add:
-    #         tree.insert("", "end", values=item)
-
-    # def abs_add():
-    #     tree.delete(*tree.get_children())  
-
-    #     items_to_add = [
-    #         ("Knee to Elbow Crunch", "3", "10"),
-    #         ("Sit Ups", "3", "10"),
-    #         ("Elbow Plank", "3", "10")
-    #     ]
-
-    #     for item in items_to_add:
-    #         tree.insert("", "end", values=item)
-
-    # def chest_add():
-    #     tree.delete(*tree.get_children())  
-
-    #     items_to_add = [
-    #         ("Bench Press", "3", "10"),
-    #         ("Inclined Press", "3", "10"),
-    #         ("Chest Dips", "2", "8")
-    #     ]
-
-    #     for item in items_to_add:
-    #         tree.insert("", "end", values=item)
-
-    # def shoulders_add():
-    #     tree.delete(*tree.get_children())  
-
-    #     items_to_add = [
-    #         ("Shoulder Press", "3", "10"),
-    #         ("Seated Raises", "3", "10"),
-    #         ("Lateral Raise", "3", "10")
-    #     ]
-
-    #     for item in items_to_add:
-    #         tree.insert("", "end", values=item)
-
-
-    # triceps = tb.Button(bootstyle="success", text="Triceps", command=triceps_add)
-    # triceps.place(x=0, y=550)
-    # biceps = tb.Button(bootstyle="success", text="Biceps", command=biceps_add)
-    # biceps.place(x=100, y=550)
-    # legs = tb.Button(bootstyle="success", text="Legs", command=legs_add)
-    # legs.place(x=200, y=550)
-    # back = tb.Button(bootstyle="success", text="Back", command=back_add)
-    # back.place(x=300, y=550)
-    # abs = tb.Button(bootstyle="success", text="Abs", command=abs_add)
-    # abs.place(x=400, y=550)
-    # chest = tb.Button(bootstyle="success", text="Chest", command=chest_add)
-    # chest.place(x=500, y=550)
-    # shoulders = tb.Button(bootstyle="success", text="Shoulders", command=shoulders_add)
-    # shoulders.place(x=600, y=550)
-
-
-    # tree2 = tb.Treeview(main_gui, columns=columns, show="headings", height=10)
-    # tree2.place(x=800, y=400)
-
-    # tree2.heading("Exercise", text="Exercise")
-    # tree2.heading("Sets", text="Sets")
-    # tree2.heading("Reps", text="Reps")
-
-    # def add_selected_item():
-    #     selected_item = tree.selection()
-    #     if selected_item:
-    #         values = tree.item(selected_item, "values")
-    #         tree2.insert("", "end", values=values)
-
-    # add_button = tb.Button(main_gui, text="Add Selected Item", command=add_selected_item)
-    # add_button.place(x=660, y=250)
-
-
-    # calendar = tb.DateEntry(main_gui) #problem
-    # calendar.place(x=1, y=1)
-
-    # def clear_items():
-    #     tree2.delete(*tree.get_children())
-
-    # clear_button = tb.Button(main_gui, text="Clear Items", command=clear_items)
-    # clear_button.place(x=1, y=1) #problem
-
-    # main_gui.mainloop()
-
-
-
-
-
-
-
-
+#starting window
 root = tb.Window(themename="superhero")
 root.geometry("300x250")
 root.title("Account Login")
