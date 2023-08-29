@@ -157,13 +157,20 @@ def clear_items():
     tree2.delete(*tree2.get_children())
 
 clear_button = tb.Button(main_gui, text="Clear Items", command=clear_items)
-clear_button.place(x=1060, y=610)
+clear_button.place(x=1310, y=610)
 
 tb.Label(text="Listed Exercises").place(x=640, y=5)
-
 tb.Label(text="Today's Exercises").place(x=1050, y=375)
 
-
+meter = tb.Meter(
+    metersize=180,
+    padding=5,
+    amountused=0,
+    metertype="semi",
+    subtext="Percent Completed",
+    interactive=True,
+)
+meter.place(x=1050, y=600)
 
 
 
